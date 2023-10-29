@@ -10,9 +10,13 @@
   })
 
   const validar = (e) =>{
+    if (Object.values(paciente).includes('')) {
+      console.log('Faltan campos por llenar')
+      return;
+    }
     
-    
-    console.log('validando...')
+    console.log('despues del if')
+
   }
   
 </script>
