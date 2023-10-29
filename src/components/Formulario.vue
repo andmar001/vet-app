@@ -8,6 +8,12 @@
     alta: '',
     sintomas: ''
   })
+
+  const validar = (e) =>{
+    
+    
+    console.log('validando...')
+  }
   
 </script>
 
@@ -19,7 +25,8 @@
       <span class="text-indigo-600 font-bold">Adminístralos</span>
     </p>
     <form 
-      class="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
+        class="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
+        @submit.prevent="validar"
     > 
       <div class="mb-5">
         <label

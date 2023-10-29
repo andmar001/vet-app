@@ -10,3 +10,7 @@ npx tailwindcss init -p
 # headless ui  - usado para crear componentes de interfaz de usuario accesibles y sin diseño
 npm install @headlessui/vue
 - sitio: https://headlessui.dev/vue/menu
+
+# prevenir las acciones de envio de formulario -- mismas acciones  
+submit.prevent
+e.preventDefault()
