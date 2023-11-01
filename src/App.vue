@@ -2,16 +2,21 @@
   import { ref, reactive } from 'vue'
   import Header from './components/Header.vue'
   import Formulario from './components/Formulario.vue'
+  import Paciente from './components/Paciente.vue'
 
-  const pacientes = ref([])
+  var pacientes = ref([])
 
   const paciente = reactive({
-    nombre: 'maximo',
-    propietario: '',
-    email: '',
+    nombre: 'antonio',
+    propietario: 'andrade',
+    email: 'andmar@gmail.com',
     alta: '',
-    sintomas: ''
+    sintomas: 'sdsdsd'
   })
+
+  const guardarPaciente = () => {
+    pacientes.value.push(paciente)
+  }
 
 </script>
 
@@ -26,6 +31,7 @@
         v-model:email="paciente.email"
         v-model:alta="paciente.alta"
         v-model:sintomas="paciente.sintomas"
+        @guardar-paciente="guardarPaciente"
       />
 
       <!-- listado de pacientes del formulario -->
@@ -33,6 +39,17 @@
         <h3 class="font-black text-3xl text-center"> Administra tus pacientes</h3>
 
         <div v-if="pacientes.length > 0">
+
+          <p class="text-lg text-center mt-5 mb-10">
+            Información de 
+            <span class="text-indigo-600 font-bold">Pacientes</span> 
+          </p>
+
+          <Paciente
+            v-for="paciente in pacientes"
+            :key="paciente.id"
+            :paciente="paciente"
+          />
 
         </div>
         <p v-else class="mt-10 text-2xl text-center">

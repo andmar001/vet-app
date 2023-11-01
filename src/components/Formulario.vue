@@ -8,7 +8,7 @@
     titulo: ''
   })
 
-  defineEmits(['update:nombre', 'update:propietario', 'update:email', 'update:alta', 'update:sintomas'])
+  const emit = defineEmits(['update:nombre', 'update:propietario', 'update:email', 'update:alta', 'update:sintomas', 'guardar-paciente'])
 
   const props = defineProps({
     nombre: {
@@ -33,15 +33,14 @@
     }
   })
 
-  const validar = (e) =>{
+  const validar = () =>{
     if (Object.values(props).includes('')) {
       alerta.mensaje = 'Todos los campos son obligatorios';
       alerta.tipo = 'error';
-      return;
+      return
     }
-    alerta.mensaje = 'Paciente registrado correctamente';
-    alerta.tipo = 'exito';
-    
+
+    emit('guardar-paciente')
   }
   
 </script>
@@ -100,7 +99,7 @@
             Email
         </label>
         <input 
-            id="propietario"
+            id="email"
             type="email"
             placeholder="Email del propietario"
             class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
