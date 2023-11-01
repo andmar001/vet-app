@@ -42,7 +42,6 @@
       id: null
     })
   }
-
   const actualizarPaciente = (id) => {
     const pacienteEditar = pacientes.value.filter(paciente => paciente.id === id)[0]
     Object.assign(paciente, pacienteEditar)
@@ -62,6 +61,7 @@
         v-model:alta="paciente.alta"
         v-model:sintomas="paciente.sintomas"
         @guardar-paciente="guardarPaciente"
+        :id="paciente.id"
       />
 
       <!-- listado de pacientes del formulario -->
