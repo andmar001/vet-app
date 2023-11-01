@@ -7,15 +7,25 @@
   var pacientes = ref([])
 
   const paciente = reactive({
-    nombre: 'antonio',
-    propietario: 'andrade',
-    email: 'andmar@gmail.com',
+    nombre: '',
+    propietario: '',
+    email: '',
     alta: '',
-    sintomas: 'sdsdsd'
+    sintomas: ''
   })
 
   const guardarPaciente = () => {
-    pacientes.value.push(paciente)
+    pacientes.value.push({
+      ...paciente
+    })
+    // limpiar el formulario
+    Object.assign(paciente, {
+      nombre: '',
+      propietario: '',
+      email: '',
+      alta: '',
+      sintomas: ''
+    })
   }
 
 </script>
