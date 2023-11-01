@@ -18,17 +18,28 @@
   })
 
   const guardarPaciente = () => {
-    pacientes.value.push({
-      ...paciente, 
-      id: uid() // generar un id único
-    })
+    if(paciente.id){
+      const { id } = paciente;
+      //retornar la posición del paciente en el arreglo
+      const i = pacientes.value.findIndex((pacienteState) => pacienteState.id === id)
+      // actualizar el arreglo de pacientes
+      pacientes.value[i] = {...paciente}
+    }
+    else{
+      pacientes.value.push({
+        ...paciente, 
+        id: uid() // generar un id único
+      })
+    }
+
     // limpiar el formulario
     Object.assign(paciente, {
       nombre: '',
       propietario: '',
       email: '',
       alta: '',
-      sintomas: ''
+      sintomas: '',
+      id: null
     })
   }
 
