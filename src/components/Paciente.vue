@@ -1,5 +1,8 @@
 
 <script setup>
+
+   defineEmits(['actualizar-paciente'])
+
    defineProps({
       paciente: {
          type: Object,
@@ -48,11 +51,20 @@
       </p>
 
       <div class="grid md:grid-cols-2  gap-5 mt-10 ">
-         <button type="button"
-            class="block w-full py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-lg">Editar</button>
+         <button 
+            type="button"
+            class="block w-full py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-lg"
+            @click="$emit('actualizar-paciente', paciente.id)"
+         >
+            Editar
+         </button>
 
-         <button type="button"
-            class="block w-full py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg">Eliminar</button>
+         <button 
+            type="button"
+            class="block w-full py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg"
+         >
+            Eliminar
+         </button>
       </div>
    </div>
 </template>

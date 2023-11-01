@@ -32,6 +32,11 @@
     })
   }
 
+  const actualizarPaciente = (id) => {
+    const pacienteEditar = pacientes.value.filter(paciente => paciente.id === id)[0]
+    Object.assign(paciente, pacienteEditar)
+  }
+
 </script>
 
 <template>
@@ -63,6 +68,7 @@
             v-for="paciente in pacientes"
             :key="paciente.id"
             :paciente="paciente"
+            @actualizar-paciente="actualizarPaciente"
           />
 
         </div>
