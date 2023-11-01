@@ -14,3 +14,6 @@ npm install @headlessui/vue
 # prevenir las acciones de envio de formulario -- mismas acciones  
 submit.prevent
 e.preventDefault()
+
+# libreria para generar ids unicos
+npm install uuid
