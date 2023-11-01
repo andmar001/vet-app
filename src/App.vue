@@ -1,5 +1,5 @@
 <script setup>
-  import { ref, reactive } from 'vue'
+  import { ref, reactive, onMounted, watch } from 'vue'
   import { uid } from 'uid'
 
   import Header from './components/Header.vue'
@@ -16,6 +16,26 @@
     alta: '',
     sintomas: ''
   })
+
+  //detectar cambios en el storage
+  watch(pacientes, () =>{
+    guardarLocalStorage()
+  },{
+    deep: true
+  })
+
+  onMounted(()=>{
+    //obtener los pacientes del localStorage
+    const pacientesLocalStorage = JSON.parse(localStorage.getItem('pacientes'))
+    // si hay pacientes en el localStorage asignarlos al arreglo de pacientes
+    if(pacientesLocalStorage){
+      pacientes.value = pacientesLocalStorage
+    }
+  })
+
+  const guardarLocalStorage = () =>{
+    localStorage.setItem('pacientes', JSON.stringify(pacientes.value))
+  }
 
   const guardarPaciente = () => {
     if(paciente.id){
