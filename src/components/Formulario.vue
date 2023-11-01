@@ -41,6 +41,16 @@
     }
 
     emit('guardar-paciente')
+    alerta.mensaje = 'Paciente registrado correctamente';
+    alerta.tipo = 'exito';
+
+    setTimeout(() => {
+      Object.assign(alerta, {
+        tipo: '',
+        mensaje: ''
+      })  
+    }, 3000);
+
   }
   
 </script>
